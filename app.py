@@ -29,12 +29,12 @@ def respond():
        """
        # send the welcoming message
        bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
-   if text=="/meme":
+   elif text=="/meme":
        r = requests.get("https://meme-api.herokuapp.com/gimme")
        meme = json.loads(r.text)
        url = meme['url']
        bot.sendPhoto(chat_id=chat_id, photo=url, reply_to_message_id=msg_id)
-       
+
    else:
        try:
            # clear the message we got from any non alphabets
