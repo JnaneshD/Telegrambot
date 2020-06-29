@@ -36,7 +36,7 @@ def respond():
        bot.sendPhoto(chat_id=chat_id, photo=url, reply_to_message_id=msg_id)
    elif text=="/joke":
        headers = {"Accept":"application/json"}
-       r = requests.get("http:icanhazdadjoke.com/",headers=headers)
+       r = requests.get("http://www.icanhazdadjoke.com/",headers=headers)
        joke = json.loads(r.text)
        jok = joke['joke']
        bot.sendMessage(chat_id=chat_id,text=jok,reply_to_message_id=msg_id)
