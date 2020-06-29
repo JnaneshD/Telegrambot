@@ -24,8 +24,9 @@ def respond():
    if text == "/start":
        # print the welcoming message
        bot_welcome = """
-       Welcome to JDBoss_coolAvatar bot, the bot is using the service from http://avatars.adorable.io/ to generate cool looking avatars based on the name you enter so please enter a name and the bot will reply with an avatar for your name.\nType \n/meme to get some meme from reddit \n /joke to get some lame jokes \n /motivation to get some quotes lol.  
-       \n/corona to get the latest count of cases of India and Karnataka 
+       Welcome to JDBoss_coolAvatar bot
+       The bot is using the service from http://avatars.adorable.io/ to generate cool looking avatars based on the name you enter so please enter a name and the bot will reply with an avatar for your name.
+       \nType \n/meme to get some meme from reddit \n /joke to get some lame jokes \n /motivation to get some quotes lol.\n/corona to get the latest count of cases of India and Karnataka 
        """
        # send the welcoming message
        bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
@@ -50,8 +51,8 @@ def respond():
         data = json.loads(r.text)
         india_total = data['data']['summary']
         karnataka = data['data']['regional'][15]
-        moti = str("\nThe total number of cases in India: "+india_total['total']+"Recovered: "+india_total["discharged"]+" Deaths: "+india_total['deaths'])
-        motik = str("\nThe total number of cases in Karnataka: "+karnataka['totalConfirmed']+"Recovered: "+karnataka["discharged"]+" Deaths: "+karnataka['deaths'])
+        moti = "\nThe total number of cases in India: "+str(india_total['total'])+"Recovered: "+str(india_total["discharged"])+" Deaths: "+str(india_total['deaths'])
+        motik = "\nThe total number of cases in Karnataka: "+str(karnataka['totalConfirmed'])+"Recovered: "+str(karnataka["discharged"])+" Deaths: "+str(karnataka['deaths'])
         ret = moti+motik
         bot.sendMessage(chat_id=chat_id,text=ret,reply_to_message_id=msg_id)
    else:
