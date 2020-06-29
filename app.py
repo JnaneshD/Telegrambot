@@ -24,8 +24,8 @@ def respond():
    if text == "/start":
        # print the welcoming message
        bot_welcome = """
-       Welcome to JDBoss_coolAvatar bot, the bot is using the service from http://avatars.adorable.io/ to generate cool looking avatars based on the name you enter so please enter a name and the bot will reply with an avatar for your name.
-       Type /meme to get some meme from reddit
+       Welcome to JDBoss_coolAvatar bot, the bot is using the service from http://avatars.adorable.io/ to generate cool looking avatars based on the name you enter so please enter a name and the bot will reply with an avatar for your name.Type /meme to get some meme from reddit and /joke to get some lame jokes. 
+       \n 
        """
        # send the welcoming message
        bot.sendMessage(chat_id=chat_id, text=bot_welcome, reply_to_message_id=msg_id)
@@ -34,7 +34,12 @@ def respond():
        meme = json.loads(r.text)
        url = meme['url']
        bot.sendPhoto(chat_id=chat_id, photo=url, reply_to_message_id=msg_id)
-
+   elif text=="/joke":
+       headers = {"Accept":"application/json"}
+       r = requests.get("http:icanhazdadjoke.com/",headers=headers)
+       joke = json.loads(r.text)
+       jok = joke['joke']
+       bot.sendMessage(chat_id=chat_id,text=jok,reply_to_message_id=msg_id)
    else:
        try:
            # clear the message we got from any non alphabets
