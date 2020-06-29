@@ -45,7 +45,7 @@ def respond():
        mot = json.loads(r.text)
        moti = mot["affirmation"]
        bot.sendMessage(chat_id=chat_id,text=moti,reply_to_message_id=msg_id)
-    elif text=="/corona":
+   elif text=="/corona":
         r = requests.get("https://api.rootnet.in/covid19-in/stats/latest")
         data = json.loads(r.text)
         india_total = data['data']['summary']
