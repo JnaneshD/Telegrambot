@@ -54,7 +54,8 @@ def respond():
         moti = "\nTotal India: "+str(india_total['total'])+" Recovered: "+str(india_total["discharged"])+" Deaths: "+str(india_total['deaths'])
         motik = "\nTotal Karnataka: "+str(karnataka['totalConfirmed'])+" Recovered: "+str(karnataka["discharged"])+" Deaths: "+str(karnataka['deaths'])
         ret = moti+motik
-        bot.sendMessage(chat_id=chat_id,text=ret,reply_to_message_id=msg_id)
+        html_text = ('<b>'+ret+'</b>')
+        bot.sendMessage(chat_id=chat_id,text=html_text,reply_to_message_id=msg_id,parse_mode=ParseMode.HTML)
    else:
        try:
            # clear the message we got from any non alphabets
